@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v4.0.1">
-  <title>Tanvir Wazy - Home</title>
+  <title>Tanvir's Blog</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
 
@@ -58,7 +58,7 @@
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link" href="http://linkedin.com/in/tanvir-rifath">Linkedin</a>
           <a class="nav-item nav-link" href="{% static 'Tanvir Wazy\'s Resume.pdf' %}">Resume</a>
-          <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
           <a class="nav-item nav-link" href="https://www.facebook.com/tan.rifath/">Facebook</a>
         </div>
       </div>
@@ -69,38 +69,29 @@
 
   <main role="main">
 
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1>Hi, I'm Tanvir</h1>
-        <p class="lead text-muted">I am a Computer Science graduate who loves to dream big and ready to give his all to realize it. To sum myself up, I am
-          a passionate coder, an ardent reader, an avid learner and a cinephile.
-        </p>
-        <p>
-          <a href="mailto:tanvir.wazy@gmail.com" class="btn btn-primary my-2">Mail me</a>
-          <!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
-        </p>
-      </div>
-    </section>
+    <div class='container'>
 
-    <div class="album py-5 bg-light">
-      <div class="container">
+      <h1 class="text-center pt-3">Welcome to Tanvir's Blog</h1>
+      <br/>
+      <br/>
+      <h2>Latest Posts</h2>
+      <hr style="color:#19a0ab;background-color:#19a0ab;height:2px">
 
-        <div class="row">
-          {% for job in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class="card-img-top" src="{{ job.image.url }}"/>
-              <!--<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-              <div class="card-body">
-                <p class="card-text">{{ job.summary }}</p>
+      {% for blog in blogs.all %}
 
-              </div>
-            </div>
-          </div>
-          {% endfor %}
+      <a href="{% url 'detail' blog.id %}"> <h4> {{ blog.title }} </h4> </a>
+      {{ blog.pub_date_pretty }}
+      <br/>
 
-        </div>
-      </div>
+
+      <img class="img-thumbnail max-width: 100% height:auto " class="img-fluid" src="{{ blog.image.url }}" />
+
+      <br/>
+
+      <p> {{ blog.summary }} </p>
+
+      {% endfor %}
+
     </div>
 
   </main>
